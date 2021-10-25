@@ -1,41 +1,40 @@
 package com.pb.kunakh.hw3;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Array {
+        public static void main(String[] args) {
 
-
-    private static int temp;
-
-    public static void main(String[] args) {
-        int[] array = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int mas = array.length;
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i] + "");
-            System.out.println("Укажите целое число");
-
-        }
-        int sum = Arrays.stream(array).sum();
-        System.out.println("Сумма целых чисел " + sum);
-        int positive= 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 0)
-                positive ++;
-            System.out.println("Количество элементов больше ноля = "+i);
-            boolean isSorted = false;
-            while (!isSorted) {
-                isSorted = true;
-                for (i = 0; i < array.length; i++)
-                    if (array[i] > array[i + 1])
-                        array[i + 1] = temp;
-                isSorted = false;
-
+            Scanner input = new Scanner(System.in);
+            System.out.println("Заполните, пожалуйста, массив:");
+            int [] mas = new int[10];
+            for (int i = 0; i < mas.length; i++) {
+                mas[i] = input.nextInt();
             }
-        }
-    }
+            System.out.print("Заполненый массив: ");
+            for (int i = 0; i < mas.length; i++) {
+                System.out.print(mas[i] + " ");
+            }
+            boolean swap = true;
+            int temp;
+            while(swap){
+                swap = false;
+                for(int i = 0;i < mas.length-1; i++){
+                    if(mas[i] > mas[i+1]){
+                        temp = mas[i];
+                        mas[i] = mas[i+1];
+                        mas[i+1] = temp;
+                        swap = true;
+                    }}}
+            System.out.println("\nОтсортированный массив методом пузырька от меньшего к большему: " + Arrays.toString(mas));
 
-    public static void setTemp(int temp) {
-        Array.temp = temp;
-    }
-}
-
+            int num = 0;
+            int elSum = 0;
+            for (int i = 0; i < mas.length; i++) {
+                elSum += i;
+                if (mas[i] > 0) {
+                    num++;
+                }}
+            System.out.println("Количество элементов больше нуля: " + num + ". Сумма элементов массива: " + elSum + ".");
+        }}
